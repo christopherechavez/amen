@@ -3,9 +3,11 @@ package it2e.echavezz;
 import java.util.Scanner;
 
 public class IT2EEchavezz {
+    static Scanner sc = new Scanner(System.in);
+    config conf = new config();
 
     public void addAthlete() {
-        try (Scanner sc = new Scanner(System.in)) {
+        
             config conf = new config();
             System.out.println("Sport");
             String sport = sc.next();
@@ -23,15 +25,11 @@ public class IT2EEchavezz {
             String sql = "INSERT INTO tbl_Athlete ( c_sport, c_fname, c_lname, c_email, c_position, c_status) VALUES (?, ?, ?, ?, ?, ?)";
             conf.addRecord(sql, sport, fname, lname, email, position, status);
         }
-    }
-    
-    static String resp;
-    config conf = new config();
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         
-
+        String resp;
+        
         do {
             System.out.println("1. ADD");
             System.out.println("2. VIEW");
@@ -51,6 +49,7 @@ public class IT2EEchavezz {
                     test.viewAthlete(); 
                     break;
                 case 3:
+                    test.viewAthlete();
                     test.updateAthlete();
                     break;
                 case 4:
@@ -70,7 +69,6 @@ public class IT2EEchavezz {
         } while (resp.equalsIgnoreCase("yes"));
 
         System.out.println("Thank You!");
-        sc.close();
     }
 
    
@@ -83,14 +81,55 @@ public class IT2EEchavezz {
     }
 
     public void updateAthlete() {
+        System.out.print("Select ID: ");
+        int updateID = sc.nextInt();
         
+        String sqlUpdate;
+        
+        System.out.print("Choose what to update: "
+                + "\n1. Sport"
+                + "\n2. First Name"
+                + "\n3. Last Name"
+                + "\n4. Email"
+                + "\n5. Position"
+                + "\n6. Status"
+                + "Enter selection: ");
+        int updateSelection = sc.nextInt();
+        
+        switch(updateSelection){
+            case 1:
+                System.out.print("Enter new Sport: ");
+                sc.nextLine();
+                String newSport = sc.nextLine();
+                
+                sqlUpdate = "UPDATE tbl_Athlete set c_sport = ? WHERE c_athlete = ?";
+                conf.updateRecord(sqlUpdate, newSport, updateID);
+                break;
+            case 2:
+                System.out.print("Enter new first name: ");
+                String newFname = sc.next();
+                
+                sqlUpdate = "UPDATE tbl_Athlete set c_fname = ? WHERE c_athlete = ?";
+                conf.updateRecord(sqlUpdate, newFname, updateID);
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            default:
+                System.out.println("Invalid action. Please try again.");
+        }
     }
 
     public void deleteAthlete() {
-       
-    }
-
-    public void viewCAthlete() {
+       System.out.print("Select ID: ");
+        int deleteID = sc.nextInt();
         
+        String sqlDelete = "DELETE FROM tbl_Athlete WHERE c_athlete = ?";
+        conf.deleteRecord(sqlDelete, deleteID);
     }
 }
