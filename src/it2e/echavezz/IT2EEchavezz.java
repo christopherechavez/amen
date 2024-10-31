@@ -8,8 +8,7 @@ public class IT2EEchavezz {
 
     public void addAthlete() {
         
-            config conf = new config();
-            System.out.println("Sport");
+            System.out.print("Sport: ");
             String sport = sc.next();
             System.out.print("First Name: ");
             String fname = sc.next();
@@ -19,7 +18,7 @@ public class IT2EEchavezz {
             String email = sc.next();
             System.out.print("Position: ");
             String position = sc.next();
-            System.out.println("Status: ");
+            System.out.print("Status: ");
             String status = sc.next();
 
             String sql = "INSERT INTO tbl_Athlete ( c_sport, c_fname, c_lname, c_email, c_position, c_status) VALUES (?, ?, ?, ?, ?, ?)";
@@ -93,7 +92,7 @@ public class IT2EEchavezz {
                 + "\n4. Email"
                 + "\n5. Position"
                 + "\n6. Status"
-                + "Enter selection: ");
+                + "\nEnter selection: ");
         int updateSelection = sc.nextInt();
         
         switch(updateSelection){
@@ -113,13 +112,30 @@ public class IT2EEchavezz {
                 conf.updateRecord(sqlUpdate, newFname, updateID);
                 break;
             case 3:
+                System.out.print("Enter new Last Name: ");
+                String newLname = sc.next();
+                sqlUpdate = "UPDATE tbl_Athlete SET c_lname = ? WHERE c_athlete = ?";
+                conf.updateRecord(sqlUpdate, newLname, updateID);
                 break;
             case 4:
+                System.out.print("Enter new Email: ");
+                String newEmail = sc.next();
+                sqlUpdate = "UPDATE tbl_Athlete SET c_email = ? WHERE c_athlete = ?";
+                conf.updateRecord(sqlUpdate, newEmail, updateID);
                 break;
             case 5:
+                System.out.print("Enter new Position: ");
+                String newPosition = sc.next();
+                sqlUpdate = "UPDATE tbl_Athlete SET c_position = ? WHERE c_athlete = ?";
+                conf.updateRecord(sqlUpdate, newPosition, updateID);
                 break;
             case 6:
+                System.out.print("Enter new Status: ");
+                String newStatus = sc.next();
+                sqlUpdate = "UPDATE tbl_Athlete SET c_status = ? WHERE c_athlete = ?";
+                conf.updateRecord(sqlUpdate, newStatus, updateID);
                 break;
+
             default:
                 System.out.println("Invalid action. Please try again.");
         }
