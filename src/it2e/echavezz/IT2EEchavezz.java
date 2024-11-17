@@ -9,6 +9,7 @@ public class IT2EEchavezz {
         config conf = new config();
         Athlete a = new Athlete();
         Sport s = new Sport();
+        Event e = new Event();
         
         String resp;
         
@@ -16,7 +17,8 @@ public class IT2EEchavezz {
             System.out.println("Sports Event Registration System");
             System.out.println("1. ATHLETE");
             System.out.println("2. SPORT");
-            System.out.println("3. EXIT");
+            System.out.println("3. EVENT");
+            System.out.println("4. EXIT");
             
             System.out.print("Enter action: ");
             int action = conf.validateInt();
@@ -29,6 +31,9 @@ public class IT2EEchavezz {
                     s.sport();
                     break;
                 case 3:
+                    e.event();
+                    break;
+                case 4:
                     break;
                 default:
                 System.out.println("Invalid action. Please try again.");

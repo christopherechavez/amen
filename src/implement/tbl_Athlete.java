@@ -41,7 +41,7 @@ public class tbl_Athlete {
         String Query = "SELECT c_athlete, s.s_name, c_fname, c_status "
                 + "FROM tbl_Athlete "
                 + "INNER JOIN tbl_Sport s ON tbl_Athlete.s_id = s.s_id";
-        String[] Hdr = {"ID", "SPORT", "First Name", "Status"};
+        String[] Hdr = {"ID", "SPORT", "FIRST NAME", "STATUS"};
         String[] Clmn = {"c_athlete", "s_name", "c_fname", "c_status"};
         
         conf.viewRecords(Query, Hdr, Clmn);
